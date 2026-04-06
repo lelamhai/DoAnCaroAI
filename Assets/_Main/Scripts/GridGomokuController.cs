@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public enum LayerState
 {
@@ -7,11 +8,11 @@ public enum LayerState
     O
 }
 
-public class GridClassicController : MonoBehaviour, IClickCell
+public class GridGomokuController : MonoBehaviour, IClickCell
 {
     [SerializeField] private int ColRow = 15;
     [SerializeField] private Cell cellPrefab;
-    [SerializeField] private GameObject GridClassic;
+    [SerializeField] private GridLayoutGroup gridLayoutGroup;
     [SerializeField] private LayerState currentLayer;
 
     private LayerState[,] boardState;
@@ -20,7 +21,8 @@ public class GridClassicController : MonoBehaviour, IClickCell
     private void Awake()
     {
         currentLayer = LayerState.X;
-        GridClassic = this.gameObject;
+        gridLayoutGroup = GetComponent<GridLayoutGroup>();
+        gridLayoutGroup.constraintCount = ColRow;
 
         boardState = new LayerState[ColRow, ColRow];
         SpawnCell();
@@ -32,7 +34,7 @@ public class GridClassicController : MonoBehaviour, IClickCell
         {
             for (int j = 0; j < ColRow; j++)
             {
-                var cell = Instantiate(cellPrefab, GridClassic.transform);
+                var cell = Instantiate(cellPrefab, gridLayoutGroup.transform);
                 cell.SetInfoCell(this, 0, new Vector2(i, j));
             }
         }

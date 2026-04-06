@@ -1550,7 +1550,7 @@ RectTransform:
   m_Children:
   - {fileID: 1642526304}
   m_Father: {fileID: 1929479566}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
@@ -1603,10 +1603,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1642526304}
-  - component: {fileID: 1642526305}
   - component: {fileID: 1642526306}
+  - component: {fileID: 1642526305}
   m_Layer: 5
-  m_Name: GridClassic
+  m_Name: GridGomoku
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1652,10 +1652,10 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 60, y: 60}
+  m_CellSize: {x: 45, y: 45}
   m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 15
 --- !u!114 &1642526306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1668,9 +1668,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a361079d45f0b7245b1069ab2b243197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColRow: 15
+  ColRow: 20
   cellPrefab: {fileID: 7600295085486879482, guid: 53d421c9cdd6de348a2e7d748d67432f, type: 3}
-  GridClassic: {fileID: 0}
+  gridLayoutGroup: {fileID: 0}
   currentLayer: 0
 --- !u!1 &1670512459
 GameObject:
@@ -1962,7 +1962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1929479566}
   m_Layer: 5
-  m_Name: Classic
+  m_Name: Gomoku
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1981,8 +1981,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1593274964}
-  - {fileID: 1993921803}
   - {fileID: 1259048811}
+  - {fileID: 1993921803}
   m_Father: {fileID: 817996927}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2199,7 +2199,7 @@ RectTransform:
   m_Children:
   - {fileID: 565993456}
   m_Father: {fileID: 1929479566}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.75, y: 0}
   m_AnchorMax: {x: 1, y: 1}
