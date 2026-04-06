@@ -12,6 +12,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private Color ColorO;
     [SerializeField] private int Value;
     [SerializeField] private Vector2 PositionCell;
+    public Vector2 GetPositionCell => PositionCell;
     private IClickCell _gridClassic;
 
     public void SetInfoCell(IClickCell gridClassic, int value, Vector2 positionCell)
@@ -21,9 +22,9 @@ public class Cell : MonoBehaviour
         this.PositionCell = positionCell;
     }
 
-    public void SetText(bool result)
+    public void SetText(bool currentCell)
     {
-        if(result)
+        if(currentCell)
         {
             Text.text = "X";
             Text.color = ColorX;
@@ -43,6 +44,10 @@ public class Cell : MonoBehaviour
 
     private void OnClick()
     {
+        if (Text.text != "")
+        {
+            return;
+        }
         _gridClassic.OnCellClicked(this);
     }
 }

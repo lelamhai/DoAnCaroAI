@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a361079d45f0b7245b1069ab2b243197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmountCells: 15
+  ColRow: 15
   cellPrefab: {fileID: 7600295085486879482, guid: 53d421c9cdd6de348a2e7d748d67432f, type: 3}
   GridClassic: {fileID: 0}
   currentLayer: 0
