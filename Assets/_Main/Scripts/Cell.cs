@@ -1,8 +1,6 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class Cell : MonoBehaviour
 {
@@ -12,19 +10,22 @@ public class Cell : MonoBehaviour
     [SerializeField] private Color ColorO;
     [SerializeField] private int Value;
     [SerializeField] private Vector2 PositionCell;
-    public Vector2 GetPositionCell => PositionCell;
+
     private IClickCell _gridClassic;
+
+    public Vector2 GetPositionCell => PositionCell;
 
     public void SetInfoCell(IClickCell gridClassic, int value, Vector2 positionCell)
     {
-        this._gridClassic = gridClassic;
-        this.Value = value;
-        this.PositionCell = positionCell;
+        _gridClassic = gridClassic;
+        Value = value;
+        PositionCell = positionCell;
+        ClearCell();
     }
 
     public void SetText(bool currentCell)
     {
-        if(currentCell)
+        if (currentCell)
         {
             Text.text = "X";
             Text.color = ColorX;
@@ -34,7 +35,36 @@ public class Cell : MonoBehaviour
             Text.text = "O";
             Text.color = ColorO;
         }
+    }
 
+    public void SetText(LayerState state)
+    {
+        switch (state)
+        {
+            case LayerState.X:
+                Text.text = "X";
+                Text.color = ColorX;
+                break;
+
+            case LayerState.O:
+                Text.text = "O";
+                Text.color = ColorO;
+                break;
+
+            default:
+                ClearCell();
+                break;
+        }
+    }
+
+    public bool IsEmpty()
+    {
+        return string.IsNullOrEmpty(Text.text);
+    }
+
+    public void ClearCell()
+    {
+        Text.text = "";
     }
 
     private void Start()
@@ -44,10 +74,9 @@ public class Cell : MonoBehaviour
 
     private void OnClick()
     {
-        if (Text.text != "")
-        {
+        if (!IsEmpty())
             return;
-        }
-        _gridClassic.OnCellClicked(this);
+
+        _gridClassic?.OnCellClicked(this);
     }
 }
